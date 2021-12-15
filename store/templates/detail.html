@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+
+    {% block content %}
+        <p class="text-right mt-4"><a class="text-right" href="/">Back</a></p>
+        <h1 class="mt-4">Drug: {{get_drug.name}}</h1>
+
+        <h5>Components:</h5>
+            <ul>
+            {% for c in get_drug.components.all %}
+                <li>{{c.name}}</li>
+            {% endfor %}
+            </ul>
+
+        <p>Description: {{get_drug.description}}</p>
+        <p>Average price: {{ get_drug.price}}$</p>
+    {% endblock %}
