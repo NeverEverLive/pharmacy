@@ -2,7 +2,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.db import transaction
 
-from store.models import User, Position, Employee, Supplier, Drug
+from store.models import User, Position, Employee, Supplier, Drug, Component
 
 
 class EmployeeSignUpForm(UserCreationForm):
@@ -68,5 +68,16 @@ class DrugForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(DrugForm, self).__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs['class'] = 'form-control'
+
+
+class ComponentForm(forms.ModelForm):
+    class Meta:
+        model = Component
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(ComponentForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class'] = 'form-control'

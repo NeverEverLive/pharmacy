@@ -15,7 +15,7 @@
             <a class="nav-link {% if url_home == request.path %} active {% endif %}" href="{{url_home}}">Home</a>
           </li>
             <li class="nav-item">
-              {% url 'edit_page' as url_edit %}
+              {% url 'edit' as url_edit %}
             <a class="nav-link {% if url_edit == request.path %} active {% endif %}" href="{{url_edit}}">Create/edit/delete</a>
           </li>
         {% if request.user.is_authenticated %}
